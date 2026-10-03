@@ -88,7 +88,6 @@ while True:
     elif user_choice == '2':
         show_summary(my_expenses, my_budget)
     elif user_choice == '3':
-    <img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/f7cdcda5-9f92-43f1-aafd-a5253fabd4c1" />
 
         print("Goodbye!")
         break  # This breaks us out of the while loop, ending the program
