@@ -1,95 +1,50 @@
-# Personal-Expense-and-Budget-Analyzer-
-# FUNCTION 1: To add a new expense
-def add_new_expense(expense_list):
-    print("\n--- Add a New Expense ---")
-    
-    # We use 'try...except' to handle incorrect user inputs (like typing letters instead of numbers)
-    try:
-        # Get the amount and convert it to a decimal number (float)
-        amount = float(input("Enter expense amount: "))
-        
-        # Get the category. .strip() removes any accidental spaces the user typed.
-        category = input("Enter category (e.g., Food, Travel, Books): ").strip()
-        
-        # Create a dictionary for this single expense
-        single_expense = {"amount": amount, "category": category}
-        
-        # Add this dictionary to our main list
-        expense_list.append(single_expense)
-        
-        print("Success: Expense added!\n")
-        
-    except ValueError:
-        # If the user typed "abc" for the amount, it jumps here instead of crashing
-        print("Error: Please enter a valid number for the amount.\n")
+Project Title = Budget Expense Tracker 
 
+Problem Statement: College students often struggle to track where their monthly allowance goes, leading to overspending before the month ends. They need a simple, centralized tool to record daily spending and monitor their remaining balance. 
 
-# FUNCTION 2: To calculate and show the summary (This is your Computational Feature)
-def show_summary(expense_list, budget_amount):
-    print("\n--- Expense Summary ---")
-    
-    # Check if the list is empty. 'len()' checks the length of the list.
-    if len(expense_list) == 0:
-        print("No expenses recorded yet.\n")
-        return  # This stops the function here and goes back to the menu
-        
-    total_spent = 0
-    category_totals = {}  # Empty dictionary to hold totals for each category
-    
-    # Loop through every expense in our list to calculate totals
-    for item in expense_list:
-        # 1. Add to the overall total spent
-        total_spent = total_spent + item["amount"]
-        
-        # 2. Add to the specific category total
-        cat_name = item["category"]
-        
-        if cat_name in category_totals:
-            # If we already have this category in our dictionary, add to it
-            category_totals[cat_name] = category_totals[cat_name] + item["amount"]
-        else:
-            # If it's a new category, create it in the dictionary
-            category_totals[cat_name] = item["amount"]
-            
-    # Show the final numbers
-    print("Total Spent: Rs.", total_spent)
-    print("Total Budget: Rs.", budget_amount)
-    
-    # Rule-based logic: Check if the user is over budget
-    if total_spent > budget_amount:
-        print("ALERT: You have crossed your budget!")
-    else:
-        remaining = budget_amount - total_spent
-        print("Remaining Balance: Rs.", remaining)
-        
-    # Show the breakdown for each category
-    print("\nSpending by Category:")
-    for cat, amt in category_totals.items():
-        print(cat, ": Rs.", amt)
-    print("-----------------------\n")
+Intended Users: College students, young professionals, or anyone managing a fixed monthly budget. 
 
+Goals & Scope 
+(a)Objectives: 
+   Record daily income and expenses.  
+   Classify expenses into distinct categories like Food, Travel, and Academics.  
+   Calculate total monthly expenditure and identify the highest spending category.  
+   Compare total expenditure with a predefined budget to provide simple rule-based alerts.  
+(b)Proposed Solution: A Python-based terminal application that utilizes a menu-driven interface, stores financial records persistently in a CSV or TXT file, and uses core data structures (dictionaries and lists) to summarize spending patterns.  
 
-# --- MAIN PROGRAM STARTS HERE ---
+Planning & Organization 
+(a)Main Features / Modules: 
+   Data Entry Module: Functions to handle user input for expenses and budget, including error handling for incorrect inputs.  
+   Storage Module: Functions to read and write the expense data to a TXT or CSV file.  
+   Computation Module: The logic for calculating sums and identifying the highest spending categories.  
+   Reporting Module: The logic that generates monthly summaries and rule-based budget alerts.  
+(b)Team-Member Responsibilities: Distribute these among your 3 to 5 group members. For example:  
+   Member Naveen: Main loop, menu navigation, and input validation. 
+   Member Divyansh: CSV/TXT file handling for data storage. 
+   Member Raghav: Logic for calculating totals and finding the highest spending category. 
+   Member Sushant: Designing the summary report and budget alert logic. 
 
-print("Welcome to the Student Expense Analyzer!")
-my_budget = 5000.0  # You can change this to any starting budget
-my_expenses = []    # This empty list will hold all our expense dictionaries
+Technical Design 
+   Here is the basic algorithm for your program design:  
+   (a)Start 
+   (b)Load existing expense data from the storage file. 
+   (c)Display the main menu (Add Expense, View Summary, Exit). 
+   (d)If user selects "Add Expense": 
+      Prompt for amount and category. 
+      Validate input to ensure it is correct.  
+      Save to storage. 
+    (e)If user selects "View Summary": 
+      Calculate total expenses using a loop.  
+      Group and sum expenses by category using a dictionary.  
+      Compare the total sum to the budget.  
+      Print the total, category breakdown, and budget alert.  
+    (f)Loop back to step 3 until the user selects "Exit". 
+    (g)Stop 
 
-# This 'while' loop keeps the menu running forever until the user chooses to exit
-while True:
-    print("1. Add Expense")
-    print("2. View Summary")
-    print("3. Exit")
-    
-    user_choice = input("Enter your choice (1/2/3): ")
-    
-    if user_choice == '1':
-        add_new_expense(my_expenses)
-    elif user_choice == '2':
-        show_summary(my_expenses, my_budget)
-    elif user_choice == '3':
+ 
 
-        print("Goodbye!")
-        break  # This breaks us out of the while loop, ending the program
-    else:
-        print("Invalid choice. Please type 1, 2, or 3.\n")
+ 
+
+ 
+
+ 
